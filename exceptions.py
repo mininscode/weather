@@ -3,3 +3,6 @@ class CantGetCoordinates(Exception):
 
 class ApiServiceError(Exception):
     """Program can't parse weather info"""
+
+class HistoryStorageError(Exception):
+    """Program can't write weather history"""
