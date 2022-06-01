@@ -1,2 +1,2 @@
 # Weather
-App to display the weather in a specific location
+App to display or store the weather in a specific location
