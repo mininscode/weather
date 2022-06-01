@@ -2,10 +2,14 @@
 """
 This app is allows users to find out the current outside weather!"
 """
+from pathlib import Path
+
 from gps_coordinates import get_coordinates
 from weather_api_service import get_weather
 from weather_formater import format_weather
 from exceptions import CantGetCoordinates, ApiServiceError
+from history import PlainFileWeatherStorage, JSONFileWeatherStorage, \
+                    save_weather
 
 
 def main():
@@ -19,6 +23,14 @@ def main():
     except ApiServiceError:
         print("Не смог получить погоду в API сервиса погоды")
         exit(1)
+    save_weather(
+        weather,
+        PlainFileWeatherStorage(Path.cwd() / "history.txt")
+    )
+    save_weather(
+        weather,
+        JSONFileWeatherStorage(Path.cwd() / "history.json")
+    )
     print(format_weather(weather))
 
 
