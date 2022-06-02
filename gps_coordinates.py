@@ -1,4 +1,4 @@
-import geocoder
+import geocoder # type: ignore
 from dataclasses import dataclass
 
 import config
